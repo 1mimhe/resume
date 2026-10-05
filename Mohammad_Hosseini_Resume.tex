@@ -80,6 +80,10 @@
   \vspace{2pt}
 }
 
+\newcommand{\projecttitle}[1]{%
+  \noindent\textbf{#1}
+  \vspace{2pt}
+}
 \newcommand{\skillcategory}[2]{%
   \noindent\textbf{#1:} #2\par\vspace{2.5pt}%
 }
@@ -121,12 +125,11 @@ I'm a backend developer who genuinely enjoys turning real-world challenges into 
 % -- Technical Skills --
 \section{Technical Skills}
 \skillcategory{Languages \& Web}{JavaScript, TypeScript, Node.js, HTML5, CSS3, EJS, Handlebars}
-\skillcategory{Frameworks \& APIs}{NestJS, Express.js, GraphQL, RESTful APIs, Swagger}
-\skillcategory{Databases \& Data Layer}{PostgreSQL, Redis, MongoDB, MySQL, Elasticsearch, Prisma, TypeORM, Sequelize, Mongoose}
-\skillcategory{Database Engineering}{Database Architecture, Partitioning, Replication Concepts}
-\skillcategory{Architecture \& Messaging}{Event-Driven Architecture, Modular Monolith, Microservices (Basics), Message Brokers (RabbitMQ), System Design}
+\skillcategory{Frameworks \& APIs}{NestJS, Express.js, GraphQL (Basics), RESTful APIs, Swagger}
+\skillcategory{Databases \& Data Layer}{PostgreSQL, Redis, MongoDB, MySQL, Prisma, TypeORM, Sequelize, Mongoose}
+\skillcategory{Architecture \& Messaging}{Event-Driven Architecture, Modular Monolith, Microservices (Basics), Message Brokers (RabbitMQ, Redis Streams), System Design}
 \skillcategory{Real-Time Systems}{WebSocket (Socket.IO)}
-\skillcategory{DevOps \& Tooling}{Docker, Git, GitHub Actions (CI/CD), Amazon S3, Linux / Bash}
+\skillcategory{DevOps \& Tooling}{Docker, Git, GitHub Actions, Amazon S3, Linux / Bash}
 \skillcategory{Testing \& Quality}{Unit Testing (Jest, Vitest), Integration Testing (Supertest), API Testing}
 
 % -- Professional Experience --
@@ -164,26 +167,29 @@ I'm a backend developer who genuinely enjoys turning real-world challenges into 
 \projectheader
   {SyncBoard -- Real-Time Collaborative Workspace}
   {https://github.com/1mimhe/sync-board}
-  {TypeScript, NestJS, PostgreSQL, Prisma, Redis, RabbitMQ, Socket.IO, Docker, Jest, Nginx}
+  {TypeScript, NestJS, PostgreSQL, Prisma, Redis, RabbitMQ, Socket.IO, Yjs, Docker, Jest, Nginx}
 
 \begin{itemize}
-  \item Built a real-time collaborative platform (Trello + Notion style) using NestJS modular monolith architecture.
-  \item Implemented concurrent document editing with Operational Transformation (OT) over Socket.IO and scaled WebSockets horizontally via Redis Adapter.
-  \item Designed an event-sourced audit log with PostgreSQL table partitioning and optimized queries using partial and GIN indexes.
-  \item Integrated RabbitMQ with dead letter exchanges (DLX) and exponential backoff retry policies for reliable async notifications.
+  \item Designed and built the backend of a Trello/Notion-style workspace (Kanban boards, cards, collaborative documents) as a NestJS modular monolith with decoupled domain modules communicating via domain events, ready for microservice extraction.
+  \item Implemented real-time document editing with Yjs (CRDT) over Socket.IO with debounced PostgreSQL persistence and snapshot versioning; scaled WebSockets horizontally with the Redis adapter and built Redis-based presence tracking.
+  \item Optimized PostgreSQL: monthly range-partitioned audit log, partial/composite indexes, and LexoRank ordering for single-row card reordering.
+  \item Built async processing on RabbitMQ with dead letter exchanges, exponential-backoff retries, and Redis-backed idempotent consumers.
+  \item Implemented RS256 JWT auth with rotating refresh tokens and reuse detection, Redis token blacklist, Google OAuth, multi-tenant RBAC, Redis rate limiting and idempotency keys, and presigned S3 uploads.
+  \item Wrote 1,200+ unit tests (100\% coverage), containerized the stack (Nginx, PgBouncer, read replicas), and built a React client to demo the backend.
 \end{itemize}
-
 
 \vspace{4pt}
 
 \projectheader
   {HamBaar -- Package Delivery Platform}
   {https://github.com/1mimhe/hambaar-backend}
-  {TypeScript, NestJS, PostgreSQL, Prisma, Redis, AWS S3, Docker, Jest, Turf.js}
+  {TypeScript, NestJS, PostgreSQL, Prisma, Redis, AWS S3, Docker, GitHub Actions, Jest, Turf.js}
 
 \begin{itemize}
-  \item Designed a scalable package delivery platform matching senders with compatible transporters using geospatial queries (Turf.js + Neshan Maps API) and dynamic pricing logic.
-  \item Built JWT authentication with RBAC, Redis-backed session management, OTP verification, and secure file uploads via AWS S3 pre-signed URLs.
+  \item Led product definition and backend design of a platform matching package senders with transporters, covering the full flow: package and trip creation, matching, delivery requests, tracking, and wallet with escrow and commission settlement.
+  \item Built the matching engine using geospatial route-corridor analysis (Turf.js, Neshan Maps API) with capacity checks and ranking, plus a configurable dynamic pricing engine (distance tiers, weight, special handling, route deviation).
+  \item Implemented multi-stage SMS OTP authentication with scoped JWTs (temporary, progress, access), RBAC, Redis sessions, OTP rate limiting, and presigned S3 uploads with size limits.
+  \item Set up unit, integration (real PostgreSQL and Redis), and e2e tests (600+ unit tests, \textasciitilde 92\% coverage) and a CI/CD pipeline deploying Docker images automatically.
 \end{itemize}
 
 \vspace{4pt}
@@ -194,8 +200,9 @@ I'm a backend developer who genuinely enjoys turning real-world challenges into 
   {TypeScript, Express.js, Prisma, PostgreSQL, Redis, AWS S3, TSOA, Docker, Vitest}
 
 \begin{itemize}
-  \item Built a no-code platform for restaurant digital menu management with hierarchical multi-tenant structure (restaurant, branch, menu, category).
-  \item Implemented RBAC with Redis session handling and event-driven service communication using Redis Streams.
+  \item Built the backend of a no-code restaurant menu platform: a reusable item backlog and day-based menu publishing across a multi-tenant hierarchy (restaurant, branch, menu), plus customer ordering with status tracking.
+  \item Implemented owner auth (session + JWT with scope-based permissions) and customer email-OTP login with rate limiting.
+  \item Integrated external image-processing and OTP services via Redis Streams, and presigned S3 uploads for menu images.
 \end{itemize}
 
 \vspace{4pt}
@@ -203,11 +210,13 @@ I'm a backend developer who genuinely enjoys turning real-world challenges into 
 \projectheader
   {Bookstore API}
   {https://github.com/1mimhe/bookstore-nest}
-  {TypeScript, NestJS, TypeORM, MySQL, Redis, Cron}
+  {TypeScript, NestJS, TypeORM, MySQL, Redis, Docker, Jest}
 
 \begin{itemize}
-  \item Designed a feature-rich bookstore API with normalized relational schema, dynamic query filtering and sorting, Redis caching, and real-time view tracking.
-  \item Built a review system with reactions and threaded replies, and an order lifecycle with cart management and discount codes.
+  \item Designed a normalized MySQL schema modeling titles, physical editions, authors, translators, publishers, tags, characters, collections, orders, and more, with TypeORM migrations and seeders.
+  \item Built the e-commerce flow: carts, percentage/fixed discount codes, and orders with price snapshots and atomic conditional stock updates to prevent overselling under concurrent requests.
+  \item Implemented session-based auth (Redis) with role guards (customer, staff, publisher, admin), plus non-blocking Redis view tracking and trending content.
+  \item Built reviews with replies and emoji reactions, bookmarks, blogs, and support tickets, with event-driven staff audit logging, health probes, and Swagger docs.
 \end{itemize}
 
 % -- Education --
