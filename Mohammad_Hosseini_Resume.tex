@@ -1,0 +1,245 @@
+%-------------------------
+% ATS-Friendly Resume - Mohammad Hosseini
+% LaTeX Template - Clean, parseable, professional
+%-------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{iftex}
+\ifXeTeX
+  \usepackage{fontspec}
+  \newfontfamily\namefont[LetterSpace=6.0]{Century Gothic}
+\else
+  \usepackage[utf8]{inputenc}
+  \newcommand{\namefont}{}
+\fi
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault} % Modern, clean sans-serif font
+\usepackage[margin=0.55in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+% -- Color Definitions --
+\definecolor{primary}{HTML}{180d24}      % Very dark deep purple, reads almost black
+\definecolor{accent}{HTML}{31144a}       % Elegant dark purple for section rules
+\definecolor{linkblue}{HTML}{0066cc}     % Classic clean professional blue for links
+\definecolor{darkgray}{HTML}{2d2d2d}     % Body text
+\definecolor{medgray}{HTML}{505050}      % Secondary text
+\definecolor{lightgray}{HTML}{7a7a7a}    % Tertiary text
+
+% -- Hyperlink Setup --
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue,
+    pdfauthor={Mohammad Hosseini},
+    pdftitle={Mohammad Hosseini - Software Engineer / Backend Developer Resume},
+    pdfsubject={Software Engineer / Backend Developer},
+    pdfkeywords={Software Engineer, Backend Developer, Node.js, NestJS, TypeScript, PostgreSQL, Redis,
+                 Microservices, Docker, REST API}
+}
+
+% -- Page Setup --
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\footnotesize\color{lightgray} Mohammad Hosseini \textbar\ \href{https://mail.google.com/mail/?view=cm&fs=1&to=mimhe1381@gmail.com}{\color{lightgray}mimhe1381@gmail.com} \textbar\ Page \thepage}
+
+% -- Section Formatting --
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}
+  {0em}
+  {}
+  [\vspace{2pt}{\color{accent}\hrule height 0.8pt}]
+
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+
+% -- Custom Commands --
+\newcommand{\experienceheader}[4]{%
+  \noindent\textbf{#1}\hfill\textit{\small\color{medgray}#3}\\[-2pt]
+  \textit{\color{medgray}#2}\hfill\textit{\small\color{lightgray}#4}
+  \vspace{2pt}
+}
+
+\newcommand{\projectheader}[3]{%
+  \noindent\textbf{#1}\hfill\href{#2}{\small\faGithub\ \color{linkblue}GitHub}\\[-2pt]
+  {\small\color{medgray}\textit{#3}}
+  \vspace{2pt}
+}
+
+\newcommand{\projectheadernl}[2]{%
+  \noindent\textbf{#1}\\[-2pt]
+  {\small\color{medgray}\textit{#2}}
+  \vspace{2pt}
+}
+
+\newcommand{\projecttitle}[1]{%
+  \noindent\textbf{#1}
+  \vspace{2pt}
+}
+\newcommand{\skillcategory}[2]{%
+  \noindent\textbf{#1:} #2\par\vspace{2.5pt}%
+}
+
+% -- Bullet List Configuration --
+\setlist[itemize]{
+  leftmargin=14pt,
+  itemsep=1.5pt,
+  parsep=0pt,
+  topsep=2pt,
+  label=\textcolor{accent}{\textbullet}
+}
+
+% ====================================================
+%                    DOCUMENT BEGIN
+% ====================================================
+\begin{document}
+
+% -- Header --
+\begin{center}
+  {\fontsize{21pt}{25pt}\selectfont\namefont\color{primary} MOHAMMAD HOSSEINI}\\[5pt]
+  {\large\color{accent} Software Engineer}\\[8pt]
+  {\small
+    \faMapMarker*\ Tehran, Iran \quad\textbar\quad
+    \faPhone\ 09115219213 \quad\textbar\quad
+    \faEnvelope\ \href{https://mail.google.com/mail/?view=cm&fs=1&to=mimhe1381@gmail.com}{mimhe1381@gmail.com}\\[3pt]
+    \faGithub\ \href{https://github.com/1mimhe}{github.com/1mimhe} \quad\textbar\quad
+    \faLinkedin\ \href{http://www.linkedin.com/in/mohammad-hosseini-17b953367/}{linkedin.com/in/mohammad-hosseini-17b953367}
+  }
+\end{center}
+
+\vspace{-4pt}
+
+% -- About --
+\section{About}
+
+I'm a backend developer who genuinely enjoys turning real-world challenges into well-designed, usable products that people can actually benefit from. Beyond just making things work, I care deeply about software engineering principles --- writing code that is structured, maintainable, and built to last. I believe the best work happens in collaborative environments where teammates support each other, share knowledge openly, and genuinely enjoy the process. Currently open to new opportunities and excited to join a team where I can grow, contribute, and help build something meaningful together.
+
+% -- Technical Skills --
+\section{Technical Skills}
+\skillcategory{Languages \& Web}{JavaScript, TypeScript, Node.js, HTML5, CSS3, EJS, Handlebars}
+\skillcategory{Frameworks \& APIs}{NestJS, Express.js, GraphQL (Basics), RESTful APIs, Swagger}
+\skillcategory{Databases \& Data Layer}{PostgreSQL, Redis, MongoDB, MySQL, Prisma, TypeORM, Sequelize, Mongoose}
+\skillcategory{Architecture \& Messaging}{Event-Driven Architecture, Modular Monolith, Microservices (Basics), Message Brokers (RabbitMQ, Redis Streams), System Design}
+\skillcategory{Real-Time Systems}{WebSocket (Socket.IO)}
+\skillcategory{DevOps \& Tooling}{Docker, Git, GitHub Actions, Amazon S3, Linux / Bash}
+\skillcategory{Testing \& Quality}{Unit Testing (Jest, Vitest), Integration Testing (Supertest), API Testing}
+
+% -- Professional Experience --
+\section{Professional Experience}
+
+\experienceheader
+  {Software Engineer}
+  {\href{https://droplinked.com/}{Droplinked}}
+  {Dec 2025 -- Oct 2026}
+  {Abu Dhabi, UAE \textbar\ Remote}
+
+\begin{itemize}
+  \item Contributed to migrating the platform's legacy backend services to a modular NestJS architecture, setting up new infrastructure and project structure and restructuring legacy code into isolated, use-case-oriented modules with clear service responsibilities; merged to production only after automated tests and manual test cases passed.
+  \item Designed and built the subscription and billing service from scratch, integrating Stripe subscriptions and webhooks end to end to replace a limited legacy integration, and migrated existing customers from legacy collections to the new data model.
+  \item Maintained data consistency and query performance in order and inventory flows using idempotent handling of duplicate orders, safe stock updates, pagination, and partial indexes on MongoDB.
+  \item Implemented JWT and OAuth authentication, role-based access control, and API rate limiting; integrated Stripe and blockchain services using REST, message queues, and webhooks.
+  \item Worked in an 18-person team, writing unit and Postman-based end-to-end tests, setting up logging and monitoring, reviewing code with three other backend engineers, and fixing critical production bugs.
+\end{itemize}
+
+\vspace{4pt}
+
+\experienceheader
+  {Backend Developer}
+  {\href{https://robintel.ir/}{Robintel}}
+  {Aug 2024 -- Jan 2025}
+  {Isfahan, Iran \textbar\ On-Site}
+
+\begin{itemize}
+  \item Built RESTful backend services with Express.js for Robintel's online consultation and support platforms, structuring routing, controller/service layers, and middleware pipelines (authentication, request validation, centralized error handling) to team conventions for consistent, maintainable endpoints.
+  \item Translated product requirements into application flows and database schemas with the product team, defining entities, relationships, indexes, and constraints that supported new feature delivery.
+  \item Protected endpoints against malformed and unauthorized requests with token-based authentication, role-based access checks, and input validation.
+  \item Delivered features through a disciplined Git workflow (feature branching, pull requests, peer code review) and documented APIs with Swagger/Postman to streamline frontend and QA handoff.
+\end{itemize}
+
+\newpage
+
+% -- Projects --
+\section{Projects}
+
+\projectheader
+  {SyncBoard -- Real-Time Collaborative Workspace}
+  {https://github.com/1mimhe/sync-board}
+  {TypeScript, NestJS, PostgreSQL, Prisma, Redis, RabbitMQ, Socket.IO, Yjs, Docker, Jest, Nginx}
+
+\begin{itemize}
+  \item Designed and built the backend of a Trello/Notion-style workspace (Kanban boards, cards, collaborative documents) as a NestJS modular monolith with decoupled domain modules communicating via domain events, ready for microservice extraction.
+  \item Implemented real-time document editing with Yjs (CRDT) over Socket.IO with debounced PostgreSQL persistence and snapshot versioning; scaled WebSockets horizontally with the Redis adapter and built Redis-based presence tracking.
+  \item Optimized PostgreSQL: monthly range-partitioned audit log, partial/composite indexes, and LexoRank ordering for single-row card reordering.
+  \item Built async processing on RabbitMQ with dead letter exchanges, exponential-backoff retries, and Redis-backed idempotent consumers.
+  \item Implemented RS256 JWT auth with rotating refresh tokens and reuse detection, Redis token blacklist, Google OAuth, multi-tenant RBAC, Redis rate limiting and idempotency keys, and presigned S3 uploads.
+  \item Wrote 1,200+ unit tests (100\% coverage), containerized the stack (Nginx, PgBouncer, read replicas), and built a React client to demo the backend.
+\end{itemize}
+
+\vspace{4pt}
+
+\projectheader
+  {HamBaar -- Package Delivery Platform}
+  {https://github.com/1mimhe/hambaar-backend}
+  {TypeScript, NestJS, PostgreSQL, Prisma, Redis, AWS S3, Docker, GitHub Actions, Jest, Turf.js}
+
+\begin{itemize}
+  \item Led product definition and backend design of a platform matching package senders with transporters, covering the full flow: package and trip creation, matching, delivery requests, tracking, and wallet with escrow and commission settlement.
+  \item Built the matching engine using geospatial route-corridor analysis (Turf.js, Neshan Maps API) with capacity checks and ranking, plus a configurable dynamic pricing engine (distance tiers, weight, special handling, route deviation).
+  \item Implemented multi-stage SMS OTP authentication with scoped JWTs (temporary, progress, access), RBAC, Redis sessions, OTP rate limiting, and presigned S3 uploads with size limits.
+  \item Set up unit, integration (real PostgreSQL and Redis), and e2e tests (600+ unit tests, \textasciitilde 92\% coverage) and a CI/CD pipeline deploying Docker images automatically.
+\end{itemize}
+
+\vspace{4pt}
+
+\projectheader
+  {MenuChi -- No-Code Menu Builder}
+  {https://github.com/1mimhe/menuchi-backend}
+  {TypeScript, Express.js, Prisma, PostgreSQL, Redis, AWS S3, TSOA, Docker, Vitest}
+
+\begin{itemize}
+  \item Built the backend of a no-code restaurant menu platform: a reusable item backlog and day-based menu publishing across a multi-tenant hierarchy (restaurant, branch, menu), plus customer ordering with status tracking.
+  \item Implemented owner auth (session + JWT with scope-based permissions) and customer email-OTP login with rate limiting.
+  \item Integrated external image-processing and OTP services via Redis Streams, and presigned S3 uploads for menu images.
+\end{itemize}
+
+\vspace{4pt}
+
+\projectheader
+  {Bookstore API}
+  {https://github.com/1mimhe/bookstore-nest}
+  {TypeScript, NestJS, TypeORM, MySQL, Redis, Docker, Jest}
+
+\begin{itemize}
+  \item Designed a normalized MySQL schema modeling titles, physical editions, authors, translators, publishers, tags, characters, collections, orders, and more, with TypeORM migrations and seeders.
+  \item Built the e-commerce flow: carts, percentage/fixed discount codes, and orders with price snapshots and atomic conditional stock updates to prevent overselling under concurrent requests.
+  \item Implemented session-based auth (Redis) with role guards (customer, staff, publisher, admin), plus non-blocking Redis view tracking and trending content.
+  \item Built reviews with replies and emoji reactions, bookmarks, blogs, and support tickets, with event-driven staff audit logging, health probes, and Swagger docs.
+\end{itemize}
+
+% -- Education --
+\section{Education}
+
+\noindent\textbf{Master of Science in Computer Engineering -- Software Engineering}\hfill\textit{\small\color{medgray}2026 -- Present}\\
+\textit{\color{medgray}University of Tehran}
+
+\vspace{3pt}
+
+\noindent\textbf{Bachelor of Science in Computer Engineering}\hfill\textit{\small\color{medgray}2021 -- 2025}\\
+\textit{\color{medgray}University of Isfahan}
+
+% -- Additional --
+\section{Additional}
+
+\skillcategory{Languages}{English (Professional Working Proficiency) \textbar\ Persian (Native)}
+
+\skillcategory{Soft Skills}{Team Collaboration, Ownership \& Responsibility, Fast Learner, Adaptability}
+
+\end{document}
